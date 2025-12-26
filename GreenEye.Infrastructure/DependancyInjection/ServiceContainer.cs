@@ -1,10 +1,14 @@
-﻿using GreenEye.Infrastructure.Data;
+﻿using GreenEye.Domain.Interfaces;
+using GreenEye.Infrastructure.Data;
 using GreenEye.Infrastructure.IdentityModel;
+using GreenEye.Infrastructure.Implementations;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Serilog;
 
 namespace GreenEye.Infrastructure.DependancyInjection
 {
@@ -31,12 +35,22 @@ namespace GreenEye.Infrastructure.DependancyInjection
                 .AddEntityFrameworkStores<AppDbContext>()
                 .AddDefaultTokenProviders();
 
+            services.AddScoped(typeof(IAppLogger<>), typeof(AppLogger<>));
+
             return services;
         }
-
+        
         // When you need add middleware in this layer
         public static IApplicationBuilder UseInfrastructure(this IApplicationBuilder app)
         {
+            // Serilog ui
+            app.UseSerilogRequestLogging(options =>
+            {
+                options.MessageTemplate =
+                    "HTTP {RequestMethod} {RequestPath} responded {StatusCode} in {Elapsed:0.0000} ms";
+            });
+
+
             return app;
         }
     }

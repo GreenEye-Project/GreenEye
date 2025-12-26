@@ -1,8 +1,16 @@
 using GreenEye.Infrastructure.DependancyInjection;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// Serilog configuration in appsetting.json
+builder.Host.UseSerilog((context, services, loggerConfig) =>
+{
+    loggerConfig
+        .ReadFrom.Configuration(context.Configuration)
+        .ReadFrom.Services(services)
+        .Enrich.FromLogContext();
+});
 
 builder.Services.AddControllers().ConfigureApiBehaviorOptions(x => x.SuppressModelStateInvalidFilter = true);
 
@@ -12,10 +20,14 @@ builder.Services.AddInfrastructureService(builder.Configuration);
 
 var app = builder.Build();
 
+Log.Information("App Start");
+
 app.UseSwagger();
 app.UseSwaggerUI();
 
 app.UseHttpsRedirection();
+
+app.UseInfrastructure();
 
 app.UseAuthorization();
 
