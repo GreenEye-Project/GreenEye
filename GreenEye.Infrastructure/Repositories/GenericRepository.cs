@@ -37,7 +37,7 @@ namespace GreenEye.Infrastructure.Repositories
             return await query.FirstOrDefaultAsync();
         }
 
-        public async Task<IEnumerable<T>> GetAllAsync() => await _dbSet.ToListAsync();
+        public async Task<IEnumerable<T>> GetAllAsync() => await _dbSet.AsNoTracking().ToListAsync();
         
         public async Task<T?> GetByIdAsync(object id) => await _dbSet.FindAsync(id);
 

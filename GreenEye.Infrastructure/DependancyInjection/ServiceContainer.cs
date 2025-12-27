@@ -1,7 +1,9 @@
 ﻿using GreenEye.Domain.Interfaces;
+using GreenEye.Domain.IRepositories;
 using GreenEye.Infrastructure.Data;
 using GreenEye.Infrastructure.IdentityModel;
 using GreenEye.Infrastructure.Implementations;
+using GreenEye.Infrastructure.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -36,6 +38,8 @@ namespace GreenEye.Infrastructure.DependancyInjection
                 .AddDefaultTokenProviders();
 
             services.AddScoped(typeof(IAppLogger<>), typeof(AppLogger<>));
+
+            services.AddScoped<IUnitOfWrok, UnitOfWork>();
 
             return services;
         }
