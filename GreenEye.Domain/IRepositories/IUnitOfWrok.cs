@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GreenEye.Domain.IRepositories
+﻿namespace GreenEye.Domain.IRepositories
 {
-    internal interface IUnitOfWrok
+    public interface IUnitOfWrok : IDisposable
     {
+        Task CompleteAsync();
     }
 }
