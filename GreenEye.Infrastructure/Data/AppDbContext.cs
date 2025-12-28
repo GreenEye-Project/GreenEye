@@ -1,4 +1,5 @@
-﻿using GreenEye.Infrastructure.IdentityModel;
+﻿using GreenEye.Domain.Entities;
+using GreenEye.Infrastructure.IdentityModel;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -10,5 +11,7 @@ namespace GreenEye.Infrastructure.Data
         {
             
         }
+
+        public DbSet<OTP> OTPs {  get; set; }
     }
 }

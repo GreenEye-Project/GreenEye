@@ -1,4 +1,5 @@
 using GreenEye.Infrastructure.DependancyInjection;
+using GreenEye.Presentation.Middlewares;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -28,6 +29,8 @@ app.UseSwaggerUI();
 app.UseHttpsRedirection();
 
 app.UseInfrastructure();
+
+app.UseMiddleware<ExceptionMiddleware>();
 
 app.UseAuthorization();
 
