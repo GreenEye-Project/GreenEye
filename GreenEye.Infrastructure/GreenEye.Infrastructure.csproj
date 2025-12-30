@@ -20,8 +20,4 @@
     <ProjectReference Include="..\GreenEye.Application\GreenEye.Application.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Repositories\" />
-  </ItemGroup>
-
 </Project>

@@ -1,12 +1,12 @@
 ﻿using GreenEye.Application.Exceptions;
 using GreenEye.Domain.Interfaces;
-using GreenEye.Presentation.Responses;
 
 namespace GreenEye.Presentation.Middlewares
 {
-    public class ExceptionMiddleware(RequestDelegate _next, IAppLogger<ExceptionMiddleware> _logger)
+   
+    public class ExceptionMiddleware(RequestDelegate _next)
     {
-        public async Task Invoke(HttpContext context)
+        public async Task Invoke(HttpContext context, IAppLogger<ExceptionMiddleware> _logger)
         {
             try
             {
@@ -21,12 +21,12 @@ namespace GreenEye.Presentation.Middlewares
                     Message = ex.Message,
                 });
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 _logger.Error("Unhandled exception", ex);
 
                 context.Response.StatusCode = StatusCodes.Status500InternalServerError;
-                await context.Response.WriteAsJsonAsync( new
+                await context.Response.WriteAsJsonAsync(new
                 {
                     Message = "Something went wrong. Please try again later."
                 });
