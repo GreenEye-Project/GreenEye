@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using GreenEye.Application.DTOs.OtpDtos;
+using GreenEye.Application.DTOs.PlantDisease;
 using GreenEye.Domain.Entities;
+using GreenEye.Domain.Entities.PlantDisease;
 
 namespace GreenEye.Application.Mapping
 {
@@ -9,6 +11,9 @@ namespace GreenEye.Application.Mapping
         public MappingProfile()
         {
             CreateMap<AddOtpDto, OTP>();
+            CreateMap<CropDisease, CropDiseaseHistoryDto>();
+            CreateMap<CropDisease, CropDiseaseModelResponseDto>();
+
         }
     }
 }

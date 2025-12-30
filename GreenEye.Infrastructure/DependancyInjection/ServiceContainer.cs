@@ -1,15 +1,20 @@
-﻿using GreenEye.Domain.Interfaces;
+﻿using GreenEye.Application.IServices;
+using GreenEye.Application.IServices.PlantDisease;
+using GreenEye.Application.Mapping;
+using GreenEye.Application.Services.PlantDisease;
+using GreenEye.Domain.Interfaces;
 using GreenEye.Domain.IRepositories;
+using GreenEye.Domain.IRepositories.PlantDisease;
 using GreenEye.Infrastructure.Data;
 using GreenEye.Infrastructure.IdentityModel;
 using GreenEye.Infrastructure.Implementations;
 using GreenEye.Infrastructure.Repositories;
+using GreenEye.Infrastructure.Repositories.PlantDisease;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using Serilog;
 
 namespace GreenEye.Infrastructure.DependancyInjection
@@ -19,6 +24,7 @@ namespace GreenEye.Infrastructure.DependancyInjection
         // static => ClassName.MethodName(not craete object of class)
         public static IServiceCollection AddInfrastructureService(this IServiceCollection services, IConfiguration configuration)
         {
+
             services.AddDbContext<AppDbContext>(options =>
             {
                 options.UseSqlServer(
@@ -40,6 +46,17 @@ namespace GreenEye.Infrastructure.DependancyInjection
             services.AddScoped(typeof(IAppLogger<>), typeof(AppLogger<>));
 
             services.AddScoped<IUnitOfWrok, UnitOfWork>();
+
+            services.AddScoped<ICropDiseaseRepository, CropDiseaseRepository>();
+
+            services.AddScoped<IImageService, ImageService>();
+            services.AddScoped<ICropDiseaseService, CropDiseaseService>();
+            services.AddHttpClient<IExternalDiseaseModelService, ExternalDiseaseModelService>();
+
+            services.AddAutoMapper(cfg =>
+            {
+                cfg.AddProfile<MappingProfile>();
+            });
 
             return services;
         }
