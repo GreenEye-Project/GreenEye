@@ -1,12 +1,11 @@
 ﻿using GreenEye.Application.Exceptions;
 using GreenEye.Domain.Interfaces;
-using GreenEye.Presentation.Responses;
 
 namespace GreenEye.Presentation.Middlewares
 {
-    public class ExceptionMiddleware(RequestDelegate _next, IAppLogger<ExceptionMiddleware> _logger)
+    public class ExceptionMiddleware(RequestDelegate _next)
     {
-        public async Task Invoke(HttpContext context)
+        public async Task Invoke(HttpContext context, IAppLogger<ExceptionMiddleware> _logger)
         {
             try
             {

@@ -4,7 +4,7 @@
     {
         void Information(string message);
 
-        void Debuge(string message);
+        void Debug(string message);
 
         void Error(string message, Exception? exception = null);
 
