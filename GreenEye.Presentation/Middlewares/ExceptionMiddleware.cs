@@ -23,7 +23,7 @@ namespace GreenEye.Presentation.Middlewares
             }
             catch (Exception ex)
             {
-                _logger.Error("Unhandled exception", ex);
+                _logger.Error( ex.Message);
 
                 context.Response.StatusCode = StatusCodes.Status500InternalServerError;
                 await context.Response.WriteAsJsonAsync(new
