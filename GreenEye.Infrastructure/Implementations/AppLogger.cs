@@ -14,7 +14,7 @@ namespace GreenEye.Infrastructure.Implementations
             _logger = Log.ForContext<T>();
         }
 
-        public void Debuge(string message) => _logger.Debug(message);
+        public void Debug(string message) => _logger.Debug(message);
 
         public void Error(string message, Exception? exception = null) => _logger.Error(message, exception);
 
