@@ -44,12 +44,6 @@
 | Crop Recommendation Engine | XGBoost |
 | Plant Disease Detection | Computer Vision |
 
-### 🔗 Try Our APIs
-- 🌍 **Desertification Classification:** [Click Here](https://mariamyasser-desertification-level-api.hf.space/)  
-- 🔮 **Desertification Forecasting:** [Click Here](https://mariamyasser-desertification-forecasting-api.hf.space/)  
-- 🌾 **Crop Recommendation:** [Click Here](https://mariamyasser-crop-recommendation-api.hf.space/)  
-- 🦠 **Plant Disease Detection:** [Click Here](https://mariamyasser-plant-disease-api2.hf.space/)  
-
 ---
 
 ## 🔐 Security
@@ -100,5 +94,8 @@
 **Empowering stakeholders today for a food-secure tomorrow.** 🌾🌍  
 
 ---
+## 🧑‍🌾 Deployment
 
-> 💡 *Tip:* Click the API links to explore GreenEye in action!
+> 🔗 **Try Our APIs**:[Click Here](https://greeneyeaifeatures.runasp.net/swagger/index.html)
+> 🔗 **Try Our Application**:[Click Here](https://greeneyeaifeatures.runasp.net/swagger/index.html)
+
