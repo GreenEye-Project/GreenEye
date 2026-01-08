@@ -96,6 +96,6 @@
 ---
 ## 🧑‍🌾 Deployment
 
-> 🔗 **Try Our APIs**:[Click Here](https://greeneyeaifeatures.runasp.net/swagger/index.html)
-> 🔗 **Try Our Application**:[Click Here](https://greeneyeaifeatures.runasp.net/swagger/index.html)
+> - 🔗 **Try Our APIs**:[Click Here](https://greeneyeaifeatures.runasp.net/swagger/index.html)
+> - 🔗 **Try Our Application**:[Click Here](https://greeneyeaifeatures.runasp.net/swagger/index.html)
 
