@@ -7,7 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="IRepositories\" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Abstractions" Version="9.0.11" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Interfaces\IRepositories\Generics\" />
   </ItemGroup>
 
 </Project>

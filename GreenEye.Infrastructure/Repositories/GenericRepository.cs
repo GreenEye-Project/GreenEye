@@ -1,4 +1,4 @@
-﻿using GreenEye.Domain.IRepositories;
+﻿using GreenEye.Domain.Interfaces.IRepositories;
 using GreenEye.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
@@ -17,14 +17,21 @@ namespace GreenEye.Infrastructure.Repositories
         }
         public async Task AddAsync(T entity) => await _dbSet.AddAsync(entity);
 
-        public async Task DeleteAsync(object id)
+        public async Task DeleteByIdAsync(object id)
         {
             var result = await _dbSet.FindAsync(id);
             if (result is not null)
                 _dbSet.Remove(result);
         }
 
-        public async Task<T?> FindAsync(Expression<Func<T, bool>> predicate) => await _dbSet.FindAsync(predicate);
+        public async Task DeleteAsync(Expression<Func<T, bool>> predicate)
+        {
+            var result = await FindAsync(predicate);
+            if (result is not null)
+                _dbSet.Remove(result);
+        }
+
+        public async Task<T?> FindAsync(Expression<Func<T, bool>> predicate) => await _dbSet.FirstOrDefaultAsync(predicate);
 
         public async Task<T?> FindAsync(Expression<Func<T, bool>> predicate, string[] includes)
         {

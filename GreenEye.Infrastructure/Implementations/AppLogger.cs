@@ -17,8 +17,9 @@ namespace GreenEye.Infrastructure.Implementations
         public void Debug(string message) => _logger.Debug(message);
 
         public void Error(string message, Exception? exception = null) => _logger.Error(message, exception);
-       
+
         public void Information(string message) => _logger.Information(message);
-       
+
     }
+   
 }

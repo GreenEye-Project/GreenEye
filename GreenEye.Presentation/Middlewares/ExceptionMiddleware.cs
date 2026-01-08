@@ -1,5 +1,6 @@
 ﻿using GreenEye.Application.Exceptions;
 using GreenEye.Domain.Interfaces;
+using GreenEye.Presentation.Response;
 
 namespace GreenEye.Presentation.Middlewares
 {
@@ -10,23 +11,24 @@ namespace GreenEye.Presentation.Middlewares
             try
             {
                 await _next(context);
-                _logger.Information("");
             }
             catch (BusinessException ex)
             {
                 context.Response.StatusCode = ex.StatusCode;
-                context.Response?.WriteAsJsonAsync(new
+                await context.Response.WriteAsJsonAsync(new GeneralResponse<string>
                 {
+                    IsSuccess = false,
                     Message = ex.Message,
                 });
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                _logger.Error("Unhandled exception", ex);
+                _logger.Error($"Unhandled exception: {ex.Message} \n{ex.StackTrace}", ex);
 
                 context.Response.StatusCode = StatusCodes.Status500InternalServerError;
-                await context.Response.WriteAsJsonAsync( new
+                await context.Response.WriteAsJsonAsync(new GeneralResponse<string>
                 {
+                    IsSuccess = false,
                     Message = "Something went wrong. Please try again later."
                 });
             }
