@@ -4,7 +4,7 @@ using GreenEye.Application.Exceptions;
 using GreenEye.Application.IServices;
 using GreenEye.Application.IServices.PlantDisease;
 using GreenEye.Domain.Entities.PlantDisease;
-using GreenEye.Domain.Interfaces.IRepositories;
+using GreenEye.Domain.Interfaces.IRepositories.Generics;
 using GreenEye.Domain.Interfaces.IRepositories.PlantDisease;
 using Microsoft.AspNetCore.Http;
 

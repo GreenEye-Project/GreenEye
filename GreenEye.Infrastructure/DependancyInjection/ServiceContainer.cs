@@ -1,19 +1,18 @@
 ﻿using GreenEye.Application.IServices;
+using GreenEye.Application.IServices.Forecasting;
 using GreenEye.Application.IServices.Authentication;
 using GreenEye.Application.IServices.PlantDisease;
 using GreenEye.Application.Mapping;
+using GreenEye.Application.Services.Forecasting;
 using GreenEye.Application.Services;
 using GreenEye.Application.Services.Authentication;
 using GreenEye.Application.Services.PlantDisease;
 using GreenEye.Domain.Interfaces;
-using GreenEye.Domain.Interfaces.IRepositories;
 using GreenEye.Domain.Interfaces.IRepositories.PlantDisease;
 using GreenEye.Infrastructure.Data;
 using GreenEye.Infrastructure.Entities.IdentityModel;
 using GreenEye.Infrastructure.IdentityServices;
 using GreenEye.Infrastructure.Implementations;
-using GreenEye.Infrastructure.Repositories;
-using GreenEye.Infrastructure.Repositories.PlantDisease;
 using GreenEye.Infrastructure.Validation;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -24,6 +23,11 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using Serilog;
 using System.Text;
+using GreenEye.Domain.Interfaces.IRepositories.Generics;
+using GreenEye.Infrastructure.Implementations.Repositories.Generics;
+using GreenEye.Infrastructure.Implementations.Repositories.PlantDisease;
+using GreenEye.Domain.Interfaces.IRepositories.Forecasting;
+using GreenEye.Infrastructure.Implementations.Repositories.Forecasting;
 
 namespace GreenEye.Infrastructure.DependancyInjection
 {
@@ -54,13 +58,24 @@ namespace GreenEye.Infrastructure.DependancyInjection
 
             services.AddScoped(typeof(IAppLogger<>), typeof(AppLogger<>));
 
+            // Unit of Work
             services.AddScoped<IUnitOfWrok, UnitOfWork>();
 
+            // Repositories
             services.AddScoped<ICropDiseaseRepository, CropDiseaseRepository>();
+            services.AddScoped<IDesertificationForecastRepository, DesertificationForecastRepository>();
 
+            // Infrastructure Services
             services.AddScoped<IImageService, ImageService>();
+            services.AddHttpClient<IExternalDiseaseModelService, ExternalDiseaseModelService>();
+            services.AddHttpClient<IHistoryDataService, HistoryDataService>();
+            services.AddHttpClient<IForecastingModelService, ForecastingModelService>();
+
+            // Application Services
             services.AddScoped<IEmailService, EmailService>();
             services.AddScoped<ICropDiseaseService, CropDiseaseService>();
+            services.AddScoped<IForecastingService, ForecastingService>();
+
             services.AddScoped<IAuthenticationService, AuthenticationService>();
             services.AddScoped<IOtpService, OtpService>();
             services.AddHttpClient<IExternalDiseaseModelService, ExternalDiseaseModelService>();

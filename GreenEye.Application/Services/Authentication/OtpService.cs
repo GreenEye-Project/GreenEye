@@ -5,7 +5,7 @@ using GreenEye.Application.IServices;
 using GreenEye.Application.IServices.Authentication;
 using GreenEye.Domain.Entities;
 using GreenEye.Domain.Interfaces;
-using GreenEye.Domain.Interfaces.IRepositories;
+using GreenEye.Domain.Interfaces.IRepositories.Generics;
 using System.Diagnostics;
 using System.Security.Cryptography;
 

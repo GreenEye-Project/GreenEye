@@ -1,9 +1,9 @@
 ﻿using GreenEye.Domain.Entities;
-using GreenEye.Domain.Interfaces.IRepositories;
+using GreenEye.Domain.Interfaces.IRepositories.Generics;
 using GreenEye.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore.Storage;
 
-namespace GreenEye.Infrastructure.Repositories
+namespace GreenEye.Infrastructure.Implementations.Repositories.Generics
 {
     public class UnitOfWork(AppDbContext _context) : IUnitOfWrok
     {

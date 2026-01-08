@@ -1,6 +1,6 @@
 ﻿using GreenEye.Domain.Entities;
 
-namespace GreenEye.Domain.Interfaces.IRepositories
+namespace GreenEye.Domain.Interfaces.IRepositories.Generics
 {
     public interface IUnitOfWrok : IDisposable
     {

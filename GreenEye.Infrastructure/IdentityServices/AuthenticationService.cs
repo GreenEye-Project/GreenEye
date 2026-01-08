@@ -6,7 +6,7 @@ using GreenEye.Application.IServices.Authentication;
 using GreenEye.Domain.Entities;
 using GreenEye.Domain.Enums;
 using GreenEye.Domain.Interfaces;
-using GreenEye.Domain.Interfaces.IRepositories;
+using GreenEye.Domain.Interfaces.IRepositories.Generics;
 using GreenEye.Infrastructure.Entities.IdentityModel;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;

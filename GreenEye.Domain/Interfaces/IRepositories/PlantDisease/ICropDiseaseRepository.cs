@@ -1,5 +1,5 @@
 ﻿using GreenEye.Domain.Entities.PlantDisease;
-using GreenEye.Domain.Interfaces.IRepositories;
+using GreenEye.Domain.Interfaces.IRepositories.Generics;
 using System;
 using System.Collections.Generic;
 using System.Linq;

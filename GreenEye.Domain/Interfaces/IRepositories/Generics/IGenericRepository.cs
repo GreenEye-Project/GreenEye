@@ -1,10 +1,11 @@
 ﻿using System.Linq.Expressions;
 
-namespace GreenEye.Domain.Interfaces.IRepositories
+namespace GreenEye.Domain.Interfaces.IRepositories.Generics
 {
     public interface IGenericRepository<T> where T : class
     {
         Task AddAsync(T entity);
+        Task AddRangeAsync(IEnumerable<T> entities);
 
         void UpdateAsync(T entity);
 

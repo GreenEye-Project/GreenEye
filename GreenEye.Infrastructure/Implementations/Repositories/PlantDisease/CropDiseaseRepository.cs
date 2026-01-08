@@ -1,9 +1,10 @@
 ﻿using GreenEye.Domain.Entities.PlantDisease;
 using GreenEye.Domain.Interfaces.IRepositories.PlantDisease;
 using GreenEye.Infrastructure.Data;
+using GreenEye.Infrastructure.Implementations.Repositories.Generics;
 using Microsoft.EntityFrameworkCore;
 
-namespace GreenEye.Infrastructure.Repositories.PlantDisease
+namespace GreenEye.Infrastructure.Implementations.Repositories.PlantDisease
 {
     internal class CropDiseaseRepository : GenericRepository<CropDisease>, ICropDiseaseRepository
     {

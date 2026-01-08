@@ -1,9 +1,9 @@
-﻿using GreenEye.Domain.Interfaces.IRepositories;
+﻿using GreenEye.Domain.Interfaces.IRepositories.Generics;
 using GreenEye.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 
-namespace GreenEye.Infrastructure.Repositories
+namespace GreenEye.Infrastructure.Implementations.Repositories.Generics
 {
     public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
@@ -16,6 +16,8 @@ namespace GreenEye.Infrastructure.Repositories
             _dbSet = context.Set<T>();
         }
         public async Task AddAsync(T entity) => await _dbSet.AddAsync(entity);
+
+        public async Task AddRangeAsync(IEnumerable<T> entities) => await _dbSet.AddRangeAsync(entities);
 
         public async Task DeleteByIdAsync(object id)
         {

@@ -1,4 +1,4 @@
-using GreenEye.Infrastructure.Data.Seed;
+﻿using GreenEye.Infrastructure.Data.Seed;
 using GreenEye.Infrastructure.DependancyInjection;
 using GreenEye.Presentation.Localization;
 using GreenEye.Presentation.Middlewares;
@@ -26,7 +26,7 @@ builder.Services.AddLocalization();
 
 builder.Services.AddSingleton<IStringLocalizerFactory, JsonStringLocalizerFactorty>();
 
-// ����� ���� ��� ��� ����� ���� �������� data annotation ����� �� 
+// تتغير بردك علي حسب اللغه بتاع البرنامج data annotation علشان ال 
 builder.Services.AddMvc()
     .AddDataAnnotationsLocalization(options =>
     {
@@ -85,6 +85,16 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddInfrastructureService(builder.Configuration);
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", policy =>
+    {
+        policy.AllowAnyOrigin() // هنسيبها لجميع الدومينات لحد ما نخلص وبعدين  نضيف دومين الفلاتر بس
+              .AllowAnyMethod()
+              .AllowAnyHeader();
+    });
+});
+
 var app = builder.Build();
 
 // Add Roles
@@ -98,6 +108,8 @@ app.UseSwaggerUI();
 app.UseHttpsRedirection();
 
 app.UseInfrastructure();
+
+app.UseCors("AllowAll");
 
 app.UseMiddleware<ExceptionMiddleware>();
 
