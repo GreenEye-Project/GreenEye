@@ -1,4 +1,6 @@
 ﻿using GreenEye.Application.IServices;
+using GreenEye.Application.IServices.Classification;
+using GreenEye.Application.Services.Classification;
 using GreenEye.Application.IServices.Forecasting;
 using GreenEye.Application.IServices.Authentication;
 using GreenEye.Application.IServices.PlantDisease;
@@ -74,6 +76,11 @@ namespace GreenEye.Infrastructure.DependancyInjection
             // Application Services
             services.AddScoped<IEmailService, EmailService>();
             services.AddScoped<ICropDiseaseService, CropDiseaseService>();
+
+
+            services.AddScoped<IClassificationService, ClassificationService>();
+            services.AddScoped<IExternalApiService, ExternalApiService>();
+
             services.AddScoped<IForecastingService, ForecastingService>();
 
             services.AddScoped<IAuthenticationService, AuthenticationService>();
