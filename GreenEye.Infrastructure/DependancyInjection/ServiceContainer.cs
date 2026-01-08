@@ -1,6 +1,8 @@
 ﻿using GreenEye.Application.IServices;
+using GreenEye.Application.IServices.Classification;
 using GreenEye.Application.IServices.PlantDisease;
 using GreenEye.Application.Mapping;
+using GreenEye.Application.Services.Classification;
 using GreenEye.Application.Services.PlantDisease;
 using GreenEye.Domain.Interfaces;
 using GreenEye.Domain.IRepositories;
@@ -51,6 +53,11 @@ namespace GreenEye.Infrastructure.DependancyInjection
 
             services.AddScoped<IImageService, ImageService>();
             services.AddScoped<ICropDiseaseService, CropDiseaseService>();
+
+
+            services.AddScoped<IClassificationService, ClassificationService>();
+            services.AddScoped<IExternalApiService, ExternalApiService>();
+
             services.AddHttpClient<IExternalDiseaseModelService, ExternalDiseaseModelService>();
 
             services.AddAutoMapper(cfg =>
