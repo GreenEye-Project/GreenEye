@@ -1,14 +1,18 @@
 ﻿using GreenEye.Application.IServices;
+using GreenEye.Application.IServices.Forecasting;
 using GreenEye.Application.IServices.PlantDisease;
 using GreenEye.Application.Mapping;
+using GreenEye.Application.Services.Forecasting;
 using GreenEye.Application.Services.PlantDisease;
 using GreenEye.Domain.Interfaces;
 using GreenEye.Domain.IRepositories;
+using GreenEye.Domain.IRepositories.Forecasting;
 using GreenEye.Domain.IRepositories.PlantDisease;
 using GreenEye.Infrastructure.Data;
 using GreenEye.Infrastructure.IdentityModel;
 using GreenEye.Infrastructure.Implementations;
 using GreenEye.Infrastructure.Repositories;
+using GreenEye.Infrastructure.Repositories.Forecasting;
 using GreenEye.Infrastructure.Repositories.PlantDisease;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
@@ -45,13 +49,23 @@ namespace GreenEye.Infrastructure.DependancyInjection
 
             services.AddScoped(typeof(IAppLogger<>), typeof(AppLogger<>));
 
+            // Unit of Work
             services.AddScoped<IUnitOfWrok, UnitOfWork>();
 
+            // Repositories
             services.AddScoped<ICropDiseaseRepository, CropDiseaseRepository>();
+            services.AddScoped<IDesertificationForecastRepository, DesertificationForecastRepository>();
 
+            // Infrastructure Services
             services.AddScoped<IImageService, ImageService>();
-            services.AddScoped<ICropDiseaseService, CropDiseaseService>();
             services.AddHttpClient<IExternalDiseaseModelService, ExternalDiseaseModelService>();
+            services.AddHttpClient<IHistoryDataService, HistoryDataService>();
+            services.AddHttpClient<IForecastingModelService, ForecastingModelService>();
+
+            // Application Services
+            services.AddScoped<ICropDiseaseService, CropDiseaseService>();
+            services.AddScoped<IForecastingService, ForecastingService>();
+
 
             services.AddAutoMapper(cfg =>
             {

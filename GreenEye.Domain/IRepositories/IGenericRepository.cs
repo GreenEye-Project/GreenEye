@@ -5,6 +5,7 @@ namespace GreenEye.Domain.IRepositories
     public interface IGenericRepository<T> where T : class
     {
         Task AddAsync(T entity);
+        Task AddRangeAsync(IEnumerable<T> entities);
 
         void UpdateAsync(T entity);
 

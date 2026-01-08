@@ -4,6 +4,7 @@ using GreenEye.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GreenEye.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260107093222_AddDesertificationForecast")]
+    partial class AddDesertificationForecast
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -60,8 +63,8 @@ namespace GreenEye.Infrastructure.Migrations
                     b.Property<string>("RiskLevel")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<double>("SsrdJm2")
-                        .HasColumnType("float");
+                    b.Property<long>("SsrdJm2")
+                        .HasColumnType("bigint");
 
                     b.Property<double>("T2mC")
                         .HasColumnType("float");
