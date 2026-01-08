@@ -17,12 +17,15 @@ namespace GreenEye.Infrastructure.Repositories
         }
         public async Task AddAsync(T entity) => await _dbSet.AddAsync(entity);
 
+        public async Task AddRangeAsync(IEnumerable<T> entities) => await _dbSet.AddRangeAsync(entities);
+
         public async Task DeleteAsync(object id)
         {
             var result = await _dbSet.FindAsync(id);
             if (result is not null)
                 _dbSet.Remove(result);
         }
+
 
         public async Task<T?> FindAsync(Expression<Func<T, bool>> predicate) => await _dbSet.FindAsync(predicate);
 
