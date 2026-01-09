@@ -1,18 +1,43 @@
-# 📁 Data & AI Documentation
+# 📁 Data & AI Project Documentation
 
-This directory contains all data pipelines, datasets, AI models, and deployment-ready artifacts used in the project.  
-It represents the complete workflow starting from data collection and preprocessing, through model training and experimentation, and finally production deployment.
-
----
-
-# 📊 Data & AI Project Structure
-
-This repository contains all data processing pipelines, machine learning models,
-deployment-ready artifacts, and datasets used in the project.
+This repository contains all **data pipelines, datasets, AI models, and deployment-ready artifacts**.  
+It represents the full workflow from **data collection → preprocessing → model training → deployment**.
 
 ---
 
-## 📁 Project Tree
+## 📌 Table of Contents
+
+- [Project Overview](#project-overview)
+- [Project Tree](#project-tree)
+- [Historical Data](#historical-data)
+- [Models](#models)
+- [Needed Files for Deployment](#needed-files-for-deployment)
+  - [Crop Recommendations](#crop-recommendations)
+  - [Desertification Risk Classification](#desertification-risk-classification)
+  - [Desertification Risk Forecasting](#desertification-risk-forecasting)
+  - [Plant Disease Detection](#plant-disease-detection)
+- [Used Data](#used-data)
+- [Models & Deployment Overview](#models--deployment-overview)
+  - [Desertification Classification & Forecasting](#desertification-classification--forecasting)
+  - [Crop Recommendation](#crop-recommendation)
+  - [Plant Disease Detection](#plant-disease-detection-1)
+- [Notes](#notes)
+
+---
+
+## Project Overview
+
+| Folder | Description |
+|--------|-------------|
+| `Historical Data/` | Scripts and references for **data extraction and preprocessing** |
+| `Models/` | Jupyter notebooks for **model development, experimentation, and evaluation** |
+| `Needed Files for Deploy/` | **Production-ready artifacts** for deployment without retraining |
+| `Used Data/` | Cleaned and merged datasets for **training and validation** |
+| `_About Data & Deployment.docx` | Documentation of data sources and deployment procedures |
+
+---
+
+## Project Tree
 
 ```text
 Data & AI/
@@ -29,7 +54,7 @@ Data & AI/
 │   ├── classification_models_all.ipynb
 │   ├── crop_rec.ipynb
 │   ├── datamerge.ipynb
-│   └── plant disease model.ipynb
+│   └── plant_disease_model.ipynb
 │
 ├── Needed Files for Deploy/
 │   ├── Crop Recommendations/
@@ -37,14 +62,14 @@ Data & AI/
 │   │   └── label_encoder.pkl
 │   │
 │   ├── Desertification Risk Classification/
-│   │   ├── feature_names.pkl
+│   │   ├── xgb_desertification_pipeline.pkl
 │   │   ├── label_encoder.pkl
-│   │   └── xgb_desertification_pipeline.pkl
+│   │   └── feature_names.pkl
 │   │
 │   ├── Desertification Risk Forecasting/
-│   │   ├── feature_names.pkl
-│   │   ├── label_encoder.pkl
 │   │   ├── xgb_desertification_pipeline.pkl
+│   │   ├── label_encoder.pkl
+│   │   ├── feature_names.pkl
 │   │   ├── xgb_forecast_ndvi.pkl
 │   │   ├── xgb_forecast_rh_pct.pkl
 │   │   ├── xgb_forecast_ssrd_jm2.pkl
@@ -67,98 +92,107 @@ Data & AI/
 ---
 
 ## 📁 Historical Data
-Contains scripts and references responsible for **data extraction and preprocessing**.
 
-- **main_pipeline.py**  
-  Main pipeline for collecting geospatial, environmental, and soil data from external sources (e.g., APIs, GEE).
+**Data acquisition layer:** collects and preprocesses raw data.
 
-- **preprocessing_historical.py**  
-  Handles data cleaning, normalization, feature engineering, and unit standardization.
-
-- **HistoricalUnits.pdf**  
-  Reference document describing scientific units and measurement standards.
-
-This folder represents the **data acquisition layer** of the project.
+| File | Description |
+|------|------------|
+| `main_pipeline.py` | Collects geospatial, environmental, and soil data from APIs & GEE |
+| `preprocessing_historical.py` | Cleans, normalizes, and performs feature engineering |
+| `HistoricalUnits.pdf` | Reference for scientific units and measurement standards |
 
 ---
 
 ## 📁 Models
-Includes Jupyter notebooks used for **model development, experimentation, and evaluation**.
 
-These notebooks cover:
-- Desertification risk classification
-- Desertification forecasting
-- Crop recommendation
-- Plant disease detection
-- Data merging and integration workflows
+**Research & experimentation layer:**
 
-Files in this folder are research-oriented; finalized models are exported for deployment.
+- Desertification risk classification  
+- Desertification forecasting  
+- Crop recommendation  
+- Plant disease detection  
+- Data merging & integration workflows  
+
+> Finalized models are exported to `Needed Files for Deploy` for production use.
 
 ---
 
-## 📁 Needed Files for Deploy
-Contains **production-ready artifacts** required to deploy the trained models without retraining.
+## 📁 Needed Files for Deployment
+
+**Production-ready artifacts required to run inference without retraining.**
 
 ### 🌾 Crop Recommendations
-- `crop_pipeline.pkl` – Trained ML pipeline  
-- `label_encoder.pkl` – Crop label encoder  
+
+| File | Description |
+|------|------------|
+| `crop_pipeline.pkl` | Trained ML pipeline |
+| `label_encoder.pkl` | Crop label encoder |
 
 ### 🌍 Desertification Risk Classification
-- `xgb_desertification_pipeline.pkl` – XGBoost classification pipeline  
-- `label_encoder.pkl` – Class labels  
-- `feature_names.pkl` – Ordered feature list  
+
+| File | Description |
+|------|------------|
+| `xgb_desertification_pipeline.pkl` | XGBoost classification pipeline |
+| `label_encoder.pkl` | Class labels |
+| `feature_names.pkl` | Ordered feature list |
 
 ### 📈 Desertification Risk Forecasting
-- Forecasting models for multiple environmental variables:
-  - NDVI
-  - Relative humidity
-  - Solar radiation
-  - Temperature
-  - Dew point
-  - Precipitation
-- Includes feature mappings and encoders required for inference.
+
+| File | Description |
+|------|------------|
+| Forecasting models for NDVI, RH, SSRD, T2M, TD2M, TP | Feature mappings + trained XGBoost pipelines |
 
 ### 🌿 Plant Disease Detection
-- `model2.keras` – Deep learning model for image-based plant disease detection.
 
-This folder is the **only dependency required for production inference**.
+| File | Description |
+|------|------------|
+| `model2.keras` | Deep learning model for image-based plant disease detection |
+
+> **Note:** This is the **only folder required for production inference**.
 
 ---
 
 ## 📁 Used Data
-Contains cleaned and processed datasets used for training and validation.
 
-- **Crop_recommendation.csv**  
-  Dataset used to train and evaluate the crop recommendation model.
+| Dataset | Description | Source |
+|---------|------------|--------|
+| `Crop_recommendation.csv` | Used to train crop recommendation model | Kaggle |
+| `des_df.csv` | Intermediate desertification dataset (>100,000 samples) | Local collection |
+| `historical_data_SCIENTIFIC_NPK_FINAL_UNIFIED.csv` | Soil & environmental samples (>20 governorates) | Local collection |
+| `final_df.csv` | Merged dataset of `des_df.csv` + `historical_data_SCIENTIFIC_NPK_FINAL_UNIFIED.csv` | Local |
+| `desertification_labeled.csv` | Labeled dataset for classification & forecasting | Local |
 
-- **des_df.csv**  
-  Intermediate desertification dataset with a very large number of samples (>100,000), collected from a limited number of governorates.
-
-- **historical_data_SCIENTIFIC_NPK_FINAL_UNIFIED.csv**  
-  Dataset containing soil and environmental samples from more than 20 governorates, providing wide geographic coverage.
-
-- **final_df.csv**  
-  Unified dataset produced by merging `des_df.csv` with `historical_data_SCIENTIFIC_NPK_FINAL_UNIFIED.csv` to improve both sample density and geographic diversity.
-
-- **desertification_labeled.csv**  
-  Labeled version of the merged dataset, used directly for desertification classification and forecasting models.
-
-This merging strategy reduces geographic bias and improves nationwide model generalization.
+> Merging reduces geographic bias and improves nationwide model generalization.
 
 ---
 
-## 📄 _About Data & Deployment.docx
-A high-level summary document describing:
-- The AI models included in the project
-- Each model’s purpose and data source
-- Deployment availability and endpoints
+## Models & Deployment Overview
+
+### Desertification Classification & Forecasting
+
+- **Tasks:** Risk classification & multi-variable forecasting  
+- **Data Sources:** Google Earth Engine (GEE), SoilGrids  
+- **Deployments:**  
+  - 🔗 [Classification API](https://mariamyasser-desertification-level-api.hf.space/)  
+  - 🔗 [Forecasting API](https://mariamyasser-desertification-forecasting-api.hf.space/)
+
+### Crop Recommendation
+
+- **Dataset:** 🔗 [Kaggle Crop Recommendation Dataset](https://www.kaggle.com/datasets/atharvaingle/crop-recommendation-dataset/data)  
+- **Deployment:** 🔗 [API](https://mariamyasser-crop-recommendation-api.hf.space/)
+
+### Plant Disease Detection
+
+- **Dataset:** 🔗 [Kaggle Plant Disease Classification – Merged Dataset](https://www.kaggle.com/datasets/alinedobrovsky/plant-disease-classification-merged-dataset/data)  
+- **Deployment:** 🔗 [API](https://mariamyasser-plant-disease-api2.hf.space/)
 
 ---
 
 ## ✅ Notes
-- Data extraction logic is isolated in `Historical Data`.
-- Model training and experimentation occur in `Models`.
-- Deployment relies exclusively on `Needed Files for Deploy`.
-- Dataset merging ensures balanced regional representation.
 
-📌 *This structure ensures clarity, reproducibility, and a smooth transition from research to production.*
+- `Historical Data` → Data extraction  
+- `Models` → Training & experimentation  
+- `Needed Files for Deploy` → Production inference  
+- Dataset merging → Balanced regional representation  
+
+> 📌 This structure ensures **clarity, reproducibility, and smooth transition from research to production**.
