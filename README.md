@@ -126,4 +126,4 @@
 ## 🧑‍🌾 Deployment
 
 > - 🔗 **Try Our APIs**: [Click Here](https://greeneyeaifeatures.runasp.net/swagger/index.html)
-> - 🔗 **Try Our Application**: [Click Here](https://greeneyeaifeatures.runasp.net/swagger/index.html)
+> - 🔗 **Try Our Application**: [Click Here](https://github.com/GreenEye-Project/GreenEye/releases/tag/v1.0.0)
