@@ -52,38 +52,38 @@ class Config:
         {'name': 'Suez_Canal', 'lat': 30.5852, 'lon': 32.2654, 'region': 'Suez Canal'},
         {'name': 'Manzala_Wetland', 'lat': 31.2000, 'lon': 31.9000, 'region': 'North Delta'},
         {'name': 'Burullus_Wetland', 'lat': 31.5000, 'lon': 30.8000, 'region': 'North Delta'},
-        # {'name': 'Qarun_Lake', 'lat': 29.4500, 'lon': 30.6000, 'region': 'Fayoum'},
+        #{'name': 'Qarun_Lake', 'lat': 29.4500, 'lon': 30.6000, 'region': 'Fayoum'},
         #{'name': 'North_Coast_Shrubs', 'lat': 31.8000, 'lon': 29.2000, 'region': 'North Coast'},
-        #{'name': 'Sinai_Shrubs_StCatherine', 'lat': 28.5435, 'lon': 33.9753, 'region': 'Sinai'},
+        {'name': 'Sinai_Shrubs_StCatherine', 'lat': 28.5435, 'lon': 33.9753, 'region': 'Sinai'},
         {'name': 'Red_Sea_Mountains', 'lat': 26.0000, 'lon': 33.5000, 'region': 'Eastern Desert'},
-        {'name': 'Red_Sea_Mangroves', 'lat': 27.8000, 'lon': 33.6000, 'region': 'Red Sea'},
-        {'name': 'Gulf_of_Aqaba_Mangroves', 'lat': 29.5000, 'lon': 34.9167, 'region': 'Sinai'},
+        #{'name': 'Red_Sea_Mangroves', 'lat': 27.8000, 'lon': 33.6000, 'region': 'Red Sea'},
+        #{'name': 'Gulf_of_Aqaba_Mangroves', 'lat': 29.5000, 'lon': 34.9167, 'region': 'Sinai'},
         # North Delta
-        # {'name': 'Alexandria', 'lat': 31.2001, 'lon': 29.9187, 'region': 'North Delta'},
-        # {'name': 'Damietta', 'lat': 31.4175, 'lon': 31.8144, 'region': 'North Delta'},
-        # {'name': 'Port Said', 'lat': 31.2653, 'lon': 32.3019, 'region': 'North Delta'},
+        {'name': 'Alexandria', 'lat': 31.2001, 'lon': 29.9187, 'region': 'North Delta'},
+        {'name': 'Damietta', 'lat': 31.4175, 'lon': 31.8144, 'region': 'North Delta'},
+        {'name': 'Port Said', 'lat': 31.2653, 'lon': 32.3019, 'region': 'North Delta'},
         
         # # Delta
-        # {'name': 'Mansoura', 'lat': 31.0409, 'lon': 31.3785, 'region': 'Delta'},
-        # {'name': 'Tanta', 'lat': 30.7865, 'lon': 31.0004, 'region': 'Delta'},
-        # {'name': 'Zagazig', 'lat': 30.5852, 'lon': 31.5020, 'region': 'Delta'},
+        {'name': 'Mansoura', 'lat': 31.0409, 'lon': 31.3785, 'region': 'Delta'},
+        {'name': 'Tanta', 'lat': 30.7865, 'lon': 31.0004, 'region': 'Delta'},
+        {'name': 'Zagazig', 'lat': 30.5852, 'lon': 31.5020, 'region': 'Delta'},
         
         # # Greater Cairo
-        # {'name': 'Cairo', 'lat': 30.0444, 'lon': 31.2357, 'region': 'Greater Cairo'},
-        # {'name': 'Giza', 'lat': 30.0131, 'lon': 31.2089, 'region': 'Greater Cairo'},
+        {'name': 'Cairo', 'lat': 30.0444, 'lon': 31.2357, 'region': 'Greater Cairo'},
+        {'name': 'Giza', 'lat': 30.0131, 'lon': 31.2089, 'region': 'Greater Cairo'},
         
         # # Upper Egypt
-        # {'name': 'Assiut', 'lat': 27.1783, 'lon': 31.1859, 'region': 'Upper Egypt'},
-        # {'name': 'Luxor', 'lat': 25.6872, 'lon': 32.6396, 'region': 'Upper Egypt'},
-        # {'name': 'Aswan', 'lat': 24.0889, 'lon': 32.8998, 'region': 'Upper Egypt'},
+        {'name': 'Assiut', 'lat': 27.1783, 'lon': 31.1859, 'region': 'Upper Egypt'},
+        {'name': 'Luxor', 'lat': 25.6872, 'lon': 32.6396, 'region': 'Upper Egypt'},
+        {'name': 'Aswan', 'lat': 24.0889, 'lon': 32.8998, 'region': 'Upper Egypt'},
         
         # Deserts
-        # {'name': 'Fayoum', 'lat': 29.3084, 'lon': 30.8428, 'region': 'Western Desert'},
-        # {'name': 'New Valley', 'lat': 25.4611, 'lon': 28.5528, 'region': 'Western Desert'},
-        # {'name': 'Matrouh', 'lat': 31.3500, 'lon': 27.2373, 'region': 'Western Desert'},
-        # {'name': 'Red Sea', 'lat': 27.2578, 'lon': 33.8116, 'region': 'Eastern Desert'},
-        # {'name': 'North Sinai', 'lat': 30.2800, 'lon': 33.6178, 'region': 'Sinai'},
-        # {'name': 'South Sinai', 'lat': 28.5435, 'lon': 33.9753, 'region': 'Sinai'},
+        {'name': 'Fayoum', 'lat': 29.3084, 'lon': 30.8428, 'region': 'Western Desert'},
+        {'name': 'New Valley', 'lat': 25.4611, 'lon': 28.5528, 'region': 'Western Desert'},
+        {'name': 'Matrouh', 'lat': 31.3500, 'lon': 27.2373, 'region': 'Western Desert'},
+        {'name': 'Red Sea', 'lat': 27.2578, 'lon': 33.8116, 'region': 'Eastern Desert'},
+        {'name': 'North Sinai', 'lat': 30.2800, 'lon': 33.6178, 'region': 'Sinai'},
+        {'name': 'South Sinai', 'lat': 28.5435, 'lon': 33.9753, 'region': 'Sinai'},
     ]
     
     # Logging
