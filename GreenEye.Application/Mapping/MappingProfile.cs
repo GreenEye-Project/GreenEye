@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
+using GreenEye.Application.DTOs.AuthDtos.OtpDtos;
 using GreenEye.Application.DTOs.CropRecommendation;
 using GreenEye.Application.DTOs.Forecasting;
-using GreenEye.Application.DTOs.OtpDtos;
 using GreenEye.Application.DTOs.PlantDisease;
 using GreenEye.Domain.Entities;
 using GreenEye.Domain.Entities.CropRecommendation;

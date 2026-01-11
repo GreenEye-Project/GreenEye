@@ -1,10 +1,11 @@
-﻿using GreenEye.Application.DTOs.CropRecommendation;
+﻿using AutoMapper;
+using GreenEye.Application.DTOs.CropRecommendation;
 using GreenEye.Application.Exceptions;
 using GreenEye.Application.IServices.CropRecommendation;
 using GreenEye.Domain.Entities.CropRecommendation;
+using GreenEye.Domain.Interfaces.IRepositories.Generics;
 using GreenEye.Domain.IRepositories;
 using GreenEye.Domain.IRepositories.CropRecommendation;
-using AutoMapper;
 
 namespace GreenEye.Application.Services.CropRecommendation
 {

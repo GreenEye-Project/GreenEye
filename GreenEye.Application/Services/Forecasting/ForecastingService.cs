@@ -3,9 +3,8 @@ using GreenEye.Application.DTOs.Forecasting;
 using GreenEye.Application.Exceptions;
 using GreenEye.Application.IServices.Forecasting;
 using GreenEye.Domain.Entities.Forecasting;
-using GreenEye.Domain.IRepositories;
-using GreenEye.Domain.IRepositories.Forecasting;
-using System.Text.Json;
+using GreenEye.Domain.Interfaces.IRepositories.Forecasting;
+using GreenEye.Domain.Interfaces.IRepositories.Generics;
 
 namespace GreenEye.Application.Services.Forecasting
 {

@@ -1,6 +1,7 @@
 using GreenEye.Domain.Entities.CropRecommendation;
 using GreenEye.Domain.IRepositories.CropRecommendation;
 using GreenEye.Infrastructure.Data;
+using GreenEye.Infrastructure.Implementations.Repositories.Generics;
 using GreenEye.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 

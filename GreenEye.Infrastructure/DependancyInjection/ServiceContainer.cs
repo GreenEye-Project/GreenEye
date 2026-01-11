@@ -1,30 +1,39 @@
 ﻿using GreenEye.Application.IServices;
 using GreenEye.Application.IServices.CropRecommendation;
+using GreenEye.Application.IServices.Classification;
+using GreenEye.Application.Services.Classification;
 using GreenEye.Application.IServices.Forecasting;
+using GreenEye.Application.IServices.Authentication;
 using GreenEye.Application.IServices.PlantDisease;
 using GreenEye.Application.Mapping;
 using GreenEye.Application.Services.CropRecommendation;
 using GreenEye.Application.Services.Forecasting;
+using GreenEye.Application.Services;
+using GreenEye.Application.Services.Authentication;
 using GreenEye.Application.Services.PlantDisease;
 using GreenEye.Domain.Interfaces;
-using GreenEye.Domain.IRepositories;
 using GreenEye.Domain.IRepositories.CropRecommendation;
-using GreenEye.Domain.IRepositories.Forecasting;
-using GreenEye.Domain.IRepositories.PlantDisease;
+using GreenEye.Domain.Interfaces.IRepositories.PlantDisease;
 using GreenEye.Infrastructure.Data;
-using GreenEye.Infrastructure.IdentityModel;
+using GreenEye.Infrastructure.Entities.IdentityModel;
+using GreenEye.Infrastructure.IdentityServices;
 using GreenEye.Infrastructure.Implementations;
-using GreenEye.Infrastructure.Repositories;
 using GreenEye.Infrastructure.Repositories.CropRecommendation;
-using GreenEye.Infrastructure.Repositories.Forecasting;
-using GreenEye.Infrastructure.Repositories.Forecasting;
-using GreenEye.Infrastructure.Repositories.PlantDisease;
+using GreenEye.Infrastructure.Validation;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.IdentityModel.Tokens;
 using Serilog;
+using System.Text;
+using GreenEye.Domain.Interfaces.IRepositories.Generics;
+using GreenEye.Infrastructure.Implementations.Repositories.Generics;
+using GreenEye.Infrastructure.Implementations.Repositories.PlantDisease;
+using GreenEye.Domain.Interfaces.IRepositories.Forecasting;
+using GreenEye.Infrastructure.Implementations.Repositories.Forecasting;
 
 namespace GreenEye.Infrastructure.DependancyInjection
 {
@@ -48,7 +57,8 @@ namespace GreenEye.Infrastructure.DependancyInjection
                     );
             });
 
-            services.AddIdentity<ApplicationUser, IdentityRole>()
+            services.AddIdentity<ApplicationUser, IdentityRole>(x => x.User.AllowedUserNameCharacters = null!)
+                .AddUserValidator<UserValidation>()
                 .AddEntityFrameworkStores<AppDbContext>()
                 .AddDefaultTokenProviders();
 
@@ -74,15 +84,48 @@ namespace GreenEye.Infrastructure.DependancyInjection
             services.AddHttpClient<ICropRecommendationModelService, CropRecommendationModelService>();
 
             // Application Services
+            services.AddScoped<IEmailService, EmailService>();
             services.AddScoped<ICropDiseaseService, CropDiseaseService>();
             services.AddScoped<ICropDiseaseService, CropDiseaseService>();
+
+
+            services.AddScoped<IClassificationService, ClassificationService>();
+            services.AddScoped<IExternalApiService, ExternalApiService>();
+
             services.AddScoped<IForecastingService, ForecastingService>();
             services.AddScoped<ICropRecommendationService, CropRecommendationService>();
 
+            services.AddScoped<IAuthenticationService, AuthenticationService>();
+            services.AddScoped<IOtpService, OtpService>();
+            services.AddHttpClient<IExternalDiseaseModelService, ExternalDiseaseModelService>();
 
             services.AddAutoMapper(cfg =>
             {
                 cfg.AddProfile<MappingProfile>();
+            });
+
+            services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(options =>
+            {
+                options.SaveToken = true;
+                options.TokenValidationParameters = new TokenValidationParameters()
+                {
+                    ValidateAudience = true,
+                    ValidateIssuer = true,
+                    ValidateLifetime = true,
+                    RequireExpirationTime = true,
+                    ValidateIssuerSigningKey = true,
+                    ValidAudience = configuration["JWTAuth:Audience"],
+                    // Token دا اللي هيتفك بيه ال 
+                    ValidIssuer = configuration["JWTAuth:Issuer"],
+                    IssuerSigningKey = new SymmetricSecurityKey(
+                        Encoding.UTF8.GetBytes(configuration["JWTAuth:Key"]!)),
+                    ClockSkew = TimeSpan.FromMinutes(1)
+                };
             });
 
             return services;
@@ -98,6 +141,7 @@ namespace GreenEye.Infrastructure.DependancyInjection
                     "HTTP {RequestMethod} {RequestPath} responded {StatusCode} in {Elapsed:0.0000} ms";
             });
 
+            app.UseAuthentication();
 
             return app;
         }
