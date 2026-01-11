@@ -1,20 +1,24 @@
 ﻿using GreenEye.Application.IServices;
+using GreenEye.Application.IServices.CropRecommendation;
 using GreenEye.Application.IServices.Classification;
 using GreenEye.Application.Services.Classification;
 using GreenEye.Application.IServices.Forecasting;
 using GreenEye.Application.IServices.Authentication;
 using GreenEye.Application.IServices.PlantDisease;
 using GreenEye.Application.Mapping;
+using GreenEye.Application.Services.CropRecommendation;
 using GreenEye.Application.Services.Forecasting;
 using GreenEye.Application.Services;
 using GreenEye.Application.Services.Authentication;
 using GreenEye.Application.Services.PlantDisease;
 using GreenEye.Domain.Interfaces;
+using GreenEye.Domain.IRepositories.CropRecommendation;
 using GreenEye.Domain.Interfaces.IRepositories.PlantDisease;
 using GreenEye.Infrastructure.Data;
 using GreenEye.Infrastructure.Entities.IdentityModel;
 using GreenEye.Infrastructure.IdentityServices;
 using GreenEye.Infrastructure.Implementations;
+using GreenEye.Infrastructure.Repositories.CropRecommendation;
 using GreenEye.Infrastructure.Validation;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -65,16 +69,23 @@ namespace GreenEye.Infrastructure.DependancyInjection
 
             // Repositories
             services.AddScoped<ICropDiseaseRepository, CropDiseaseRepository>();
+            services.AddScoped<ICropDiseaseRepository, CropDiseaseRepository>();
             services.AddScoped<IDesertificationForecastRepository, DesertificationForecastRepository>();
+            services.AddScoped<ICropRecommendationRepository, CropRecommendationRepository>();
 
             // Infrastructure Services
             services.AddScoped<IImageService, ImageService>();
             services.AddHttpClient<IExternalDiseaseModelService, ExternalDiseaseModelService>();
             services.AddHttpClient<IHistoryDataService, HistoryDataService>();
+            services.AddHttpClient<IExternalDiseaseModelService, ExternalDiseaseModelService>();
+            services.AddHttpClient<IHistoryDataService, HistoryDataService>();
             services.AddHttpClient<IForecastingModelService, ForecastingModelService>();
+            services.AddHttpClient<IFeatureExtractionService, FeatureExtractionService>();
+            services.AddHttpClient<ICropRecommendationModelService, CropRecommendationModelService>();
 
             // Application Services
             services.AddScoped<IEmailService, EmailService>();
+            services.AddScoped<ICropDiseaseService, CropDiseaseService>();
             services.AddScoped<ICropDiseaseService, CropDiseaseService>();
 
 
@@ -82,6 +93,7 @@ namespace GreenEye.Infrastructure.DependancyInjection
             services.AddScoped<IExternalApiService, ExternalApiService>();
 
             services.AddScoped<IForecastingService, ForecastingService>();
+            services.AddScoped<ICropRecommendationService, CropRecommendationService>();
 
             services.AddScoped<IAuthenticationService, AuthenticationService>();
             services.AddScoped<IOtpService, OtpService>();
