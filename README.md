@@ -378,8 +378,7 @@ GreenEye is developed by a dedicated team of developers passionate about agricul
 For questions, suggestions, or support:
 - **Email**: sanadmahmoud968@gmail.com
 - **Email**: mahmoudreda4424@gmail.com
-- **Email**: sanadmahmoud968@gmail.com
-
+- **Email**: s04495320@gmail.com
 
 ---
 
