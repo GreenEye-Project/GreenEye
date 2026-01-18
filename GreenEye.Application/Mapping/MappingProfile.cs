@@ -1,5 +1,8 @@
 ﻿using AutoMapper;
 using GreenEye.Application.DTOs.AuthDtos.OtpDtos;
+using GreenEye.Application.DTOs.CropGrowthSimulation;
+using GreenEye.Application.DTOs.ExternalApi;
+using GreenEye.Application.DTOs.ExternalData;
 using GreenEye.Application.DTOs.CropRecommendation;
 using GreenEye.Application.DTOs.Forecasting;
 using GreenEye.Application.DTOs.PlantDisease;
@@ -30,6 +33,11 @@ namespace GreenEye.Application.Mapping
 
             // ForecastItemDto -> DesertificationForecast
             CreateMap<ForecastItemDto, DesertificationForecast>();
+
+            
+            CreateMap<FeaturesDto, SimulationFeaturesForRequest>()
+                .ForMember(dest => dest.Temperature,
+                opt => opt.MapFrom(src => src.t2m_c ?? 0));
         }
     }
 }

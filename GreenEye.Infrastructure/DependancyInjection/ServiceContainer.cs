@@ -34,6 +34,7 @@ using GreenEye.Infrastructure.Implementations.Repositories.Generics;
 using GreenEye.Infrastructure.Implementations.Repositories.PlantDisease;
 using GreenEye.Domain.Interfaces.IRepositories.Forecasting;
 using GreenEye.Infrastructure.Implementations.Repositories.Forecasting;
+using GreenEye.Application.Services.CropGrowthSimulation;
 
 namespace GreenEye.Infrastructure.DependancyInjection
 {
@@ -91,6 +92,8 @@ namespace GreenEye.Infrastructure.DependancyInjection
 
             services.AddScoped<IClassificationService, ClassificationService>();
             services.AddScoped<IExternalApiService, ExternalApiService>();
+
+            services.AddScoped<ICropGrowthSimulationService, CropGrowthSimulationService>();
 
             services.AddScoped<IForecastingService, ForecastingService>();
             services.AddScoped<ICropRecommendationService, CropRecommendationService>();

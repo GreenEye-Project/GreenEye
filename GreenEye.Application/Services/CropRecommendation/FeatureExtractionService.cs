@@ -20,7 +20,7 @@ namespace GreenEye.Application.Services.CropRecommendation
 
         public async Task<FeatureExtractionResponseDto> ExtractFeaturesAsync(double latitude, double longitude)
         {
-            var baseUrl = _config["ExternalApis:FeatureExtractionApi"];
+            var baseUrl = _config["ExternalApis:RealTimeDataApi"];
 
             var requestBody = new
             {
