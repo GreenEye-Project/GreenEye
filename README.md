@@ -8,6 +8,7 @@
 - [Features](#-features)
 - [Architecture](#-architecture)
 - [Technology Stack](#-technology-stack)
+- [Getting Started](#-getting-started)
 - [API Documentation](#-api-documentation)
 - [Configuration](#-configuration)
 - [Project Structure](#-project-structure)
@@ -121,6 +122,58 @@ GreenEye follows **Clean Architecture** (Onion Architecture) principles, ensurin
 - **Swagger/OpenAPI** - API documentation
 - **CORS** - Cross-origin resource sharing
 
+## 🚀 Getting Started
+
+### Prerequisites
+
+- [.NET 9.0 SDK](https://dotnet.microsoft.com/download/dotnet/9.0)
+- [SQL Server](https://www.microsoft.com/en-us/sql-server/sql-server-downloads) (or SQL Server Express)
+- [Visual Studio 2022](https://visualstudio.microsoft.com/) or [VS Code](https://code.visualstudio.com/)
+- Git
+
+### Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/yourusername/greeneye-backend.git
+   cd greeneye-backend
+   ```
+
+2. **Update Connection String**
+   
+   Edit `appsettings.json` in `GreenEye.Presentation` project:
+   ```json
+   "ConnectionStrings": {
+     "DefaultConnection": "Server=YOUR_SERVER;Database=GreenEyeDB;Trusted_Connection=True;TrustServerCertificate=True;"
+   }
+   ```
+
+3. **Update SMTP Settings**
+   
+   Configure your email settings in `appsettings.json`:
+   ```json
+   "SMTP": {
+     "Port": 587,
+     "Host": "smtp.gmail.com",
+     "Email": "your-email@gmail.com",
+     "Password": "your-app-password"
+   }
+   ```
+
+4. **Apply Database Migrations**
+   ```bash
+   cd GreenEye.Presentation
+   dotnet ef database update
+   ```
+
+5. **Run the Application**
+   ```bash
+   dotnet run
+   ```
+
+6. **Access Swagger UI**
+   
+   Navigate to: `https://localhost:7009/swagger`
 
 ## 📚 API Documentation
 

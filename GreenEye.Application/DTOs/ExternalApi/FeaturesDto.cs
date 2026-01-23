@@ -1,31 +1,18 @@
-﻿using System.Text.Json.Serialization;
+﻿using GreenEye.Application.DTOs.CropGrowthSimulation;
+using System.Text.Json.Serialization;
 namespace GreenEye.Application.DTOs.ExternalData
 {
-    public class FeaturesDto
+    public class FeaturesDto : BaseFeatures
     {
         [JsonPropertyName("year")]
         public int? year { get; set; } = 0;
 
         [JsonPropertyName("month")]
         public int? month { get; set; } = 0;
-
-        [JsonPropertyName("sand")]
-        public double? sand { get; set; } = 0;
-
         [JsonPropertyName("silt")]
         public double? silt { get; set; } = 0;
-
-        [JsonPropertyName("clay")]
-        public double? clay { get; set; } = 0;
-
-        [JsonPropertyName("soc")]
-        public double? soc { get; set; } = 0;
-
         [JsonPropertyName("ph")]
         public double? ph { get; set; } = 0;
-
-        [JsonPropertyName("bdod")]
-        public double? bdod { get; set; } = 0;
 
         [JsonPropertyName("cec")]
         public double? cec { get; set; } = 0;
@@ -50,9 +37,6 @@ namespace GreenEye.Application.DTOs.ExternalData
 
         [JsonPropertyName("lc_type1")]
         public double? lc_type1 { get; set; } = 0;
-
-        [JsonPropertyName("nitrogen")]
-        public double? nitrogen { get; set; } = 0;
 
         [JsonPropertyName("phosphorus")]
         public double? phosphorus { get; set; } = 0;
