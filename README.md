@@ -1,3 +1,4 @@
+# back-end
 # 🌱 GreenEye - Agricultural Intelligence Platform
 
 **GreenEye** is a comprehensive agricultural intelligence platform that leverages machine learning and real-time environmental data to provide farmers and agricultural professionals with actionable insights. The platform offers crop disease detection, crop recommendations, desertification analysis, and forecasting capabilities.
@@ -359,26 +360,6 @@ Language is detected from:
 2. Query string parameter
 3. Cookie value
 4. Default culture (en-US)
-
-## 📝 Logging
-
-Serilog is configured for comprehensive logging:
-- **Console Logging** - Development environment
-- **File Logging** - All environments (`Logs/logs-.txt`)
-- **Structured Logging** - JSON format support
-- **Log Enrichment** - Machine name, process ID, thread ID
-
-
-## 👥 Team
-
-GreenEye is developed by a dedicated team of developers passionate about agricultural technology and sustainability.
-
-## 📧 Contact
-
-For questions, suggestions, or support:
-- **Email**: sanadmahmoud968@gmail.com
-- **Email**: mahmoudreda4424@gmail.com
-- **Email**: s04495320@gmail.com
 
 ---
 
